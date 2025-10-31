@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://clp8hflniv2qa"]
+
+[ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_qohxi"]
+[ext_resource type="PackedScene" uid="uid://blo7vou7veeva" path="res://scenese/player.tscn" id="2_ir3tn"]
+[ext_resource type="PackedScene" uid="uid://x5pta77tasp5" path="res://scenese/tree.tscn" id="3_ir3tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir3tn"]
+size = Vector2(17, 660)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imq3g"]
+size = Vector2(20, 642)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jvsx"]
+size = Vector2(403, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alg1t"]
+size = Vector2(399, 20)
+
+[node name="Game" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qohxi")
+
+[node name="Player" parent="." instance=ExtResource("2_ir3tn")]
+position = Vector2(31, 29)
+
+[node name="tree" parent="." instance=ExtResource("3_ir3tn")]
+position = Vector2(89, 37)
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="left" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/left"]
+position = Vector2(-200.5, -7)
+shape = SubResource("RectangleShape2D_ir3tn")
+
+[node name="right" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/right"]
+position = Vector2(202, -1)
+shape = SubResource("RectangleShape2D_imq3g")
+
+[node name="bottom" type="StaticBody2D" parent="Borders"]
+position = Vector2(-7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/bottom"]
+position = Vector2(15, 327)
+shape = SubResource("RectangleShape2D_7jvsx")
+
+[node name="top" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/top"]
+position = Vector2(3, -330)
+shape = SubResource("RectangleShape2D_alg1t")
