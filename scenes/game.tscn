@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clp8hflniv2qa"]
+[gd_scene load_steps=11 format=3 uid="uid://clp8hflniv2qa"]
 
 [ext_resource type="Script" uid="uid://5e1ldmu0qd62" path="res://scenes/game.gd" id="1_imq3g"]
 [ext_resource type="Texture2D" uid="uid://doghmovcgeltw" path="res://graphics/map.png" id="1_qohxi"]
@@ -17,6 +17,9 @@ size = Vector2(403, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alg1t"]
 size = Vector2(399, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(375, 185)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_imq3g")
@@ -58,6 +61,13 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/top"]
 position = Vector2(3, -330)
 shape = SubResource("RectangleShape2D_alg1t")
+
+[node name="Finish" type="Area2D" parent="Borders"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Finish"]
+position = Vector2(-0.5, -224.5)
+shape = SubResource("RectangleShape2D_iywne")
 
 [node name="Timer" type="Node" parent="."]
 
@@ -117,5 +127,6 @@ theme_override_fonts/font = ExtResource("5_iywne")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
+[connection signal="body_entered" from="Borders/Finish" to="." method="_on_finish_body_entered"]
 [connection signal="timeout" from="Timer/CarTimer" to="." method="_on_car_timer_timeout"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]

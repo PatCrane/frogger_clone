@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Frogger"
-run/main_scene="uid://clp8hflniv2qa"
+run/main_scene="uid://bg46h5x2n6eev"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scenes/global.tscn"
 
 [display]
 
