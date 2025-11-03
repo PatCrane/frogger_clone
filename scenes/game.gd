@@ -1,6 +1,7 @@
 extends Node2D
 
 var car_scene: PackedScene = preload("res://scenes/car.tscn")
+var score: int
 
 func _on_timer_timeout() -> void:
 	print('Timer has triggered')
@@ -12,4 +13,12 @@ func _on_car_timer_timeout() -> void:
 	var pos_marker = $CarStartPositions.get_children().pick_random()
 	car.position = pos_marker.position
 	$Objects.add_child(car) # Replace with function body.
+	car.connect("body_entered", go_to_title)
 	
+func go_to_title(body):
+	print("player car collision")
+
+
+func _on_score_timer_timeout() -> void:
+	score +=1
+	$CanvasLayer/Label.text = str(score)
